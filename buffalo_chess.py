@@ -16,9 +16,9 @@ piece_guide_color = (10, 250, 10, 60)
 targeted_color = (80, 80, 240)
 cell_pixels = 80
 width_cells = 11
-height_cel= 7
+height_cells= 7
 board_space = 80
-game_board_height = cell_pixels * height_cel + board_space * 2
+game_board_height = cell_pixels * height_cells + board_space * 2
 game_board_width = cell_pixels * width_cells + board_space * 2
 
 
