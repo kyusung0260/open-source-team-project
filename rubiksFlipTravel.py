@@ -89,7 +89,7 @@ def ai_move(player):
     if is_opening():
         opening_move()
     else:
-        color_board = board_to_cboard(board) #
+        color_board = board_to_cboard(board)
         if player:
             color_board = ai_only_player1(color_board)
 
@@ -111,9 +111,26 @@ def ai_move(player):
         if best_val < tmp_val:
             return_board = tmp_board
             best_val = tmp_val
+            best_depth = depth
+        # 6턴 부터 depth 4 실행
+        if turn(board) > 6:
+            depth = 4
+            tmp_val, tmp_board = minimax.minimax_alphaBeta(color_board,depth,alpha_value,beta_value,False)
+            print("depth : ", depth,"evaluation :",tmp_val)
+            if depth %  2 == 0:
+                tmp_val = -tmp_val
+        # 값 비교
+        if best_val < tmp_val:
+            return_board = tmp_board
+            best_val = tmp_val
+            best_depth = depth
+
+
 
         end_time = time.time()
         elapsed_time = end_time - start_time
+        msg = "Algorithm Elapsed Time = " + str(round(elapsed_time, 2)) + "      depth = " + str(best_depth)
+        info_ai_message(msg)
         print("알고리즘 경과 시간 = ", round(elapsed_time, 2))
         print("best val =", best_val)
 
@@ -255,6 +272,8 @@ def info_message(_msg):
         pygame.display.update()
 
 
+
+
 def draw_button(center_pos, button_color, BUTTON_WIDTH = 99,BUTTON_HEIGHT = 99,button_text = "", width = 0):
     # draw button
     rect = pygame.Rect((0, 0, BUTTON_WIDTH, BUTTON_HEIGHT))
@@ -314,8 +333,8 @@ def draw_record_button():
         draw_button(draw_record_button_center, gray, draw_record_button_size[0]-1, draw_record_button_size[1]-1, "Record OFF")
 
 def on_draw_record_button(pos):
-        return (abs(pos[0] - draw_record_button_center[0]) <= draw_record_button_size[0]//2) and \
-            (abs(pos[1] - draw_record_button_center[1]) <= draw_record_button_size[1]//2)
+    return (abs(pos[0] - draw_record_button_center[0]) <= draw_record_button_size[0]//2) and \
+        (abs(pos[1] - draw_record_button_center[1]) <= draw_record_button_size[1]//2)
 def draw_board():
     for i in range(4):
         for j in range(4):
@@ -798,10 +817,3 @@ while play:
     pygame.display.update()
     pygame.time.delay(40)
 pygame.quit()
-
-
-
-# 해야 할 것
-# 움직일 곳이 없을 때 수를 두기만 하는 것도 추가
-# 구석에 두는 수에 차등을 둠 (상대의 타일로 막혀있으면 추가 점수를 줌)
-second push test
