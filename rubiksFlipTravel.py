@@ -245,6 +245,17 @@ def find_color(i, j):
         elif color == 4:
             return white
 
+def info_ai_message(_msg):
+    if _msg is not None:
+        # 배경 덧칠 하기
+        rect = pygame.Rect((TRAY_SIZE, TRAY_SIZE * 0.4), (TRAY_SIZE * 4.5, TRAY_SIZE))
+        pygame.draw.rect(background, black, rect)
+
+        # display message text
+        text = font.render(_msg, True, white)
+        background.blit(text, (100, 40))
+        pygame.display.update()
+
 def select_opposite_tile(pos):
     tmp_tray = find_tray(pos)
     if on_board_button(pos) and board[tmp_tray[0]][tmp_tray[1]] != 0 and board[tmp_tray[0]][tmp_tray[1]].player != player:
