@@ -55,7 +55,12 @@ def alphabeta(node, depth, alpha, beta, maximizing_player, first_depth = 1):
     if first_depth > 0:
         return_lst = []
 
-    if depth == 0 or is_terminal_node(node):  # max depth 이거나 마지막 노드(게임 over) 이면 값 반환
+    if depth == 0 or is_terminal_node(node) or evaluate.win_check(node):  # max depth 이거나 마지막 노드(게임 over) 이면 값 반환
+        if evaluate.get_p1_score() == evaluate.get_win_val() + 1:
+            return evaluate.get_win_val() + 1, []
+        elif evaluate.get_p2_score() == evaluate.get_win_val():
+            return -evaluate.get_win_val(), []
+
         score = evaluate.evaluate(node)
         return score, []
 
