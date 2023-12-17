@@ -2,7 +2,7 @@
 TWO_TILE_VAL = 100
 THREE_TILE_VAL = 111
 BLANK_VAL = -10
-EDGE_SCORE = 111
+EDGE_SCORE = 95
 WIN_VAL = 3000
 player1_score = 0
 player2_score = 0
@@ -30,22 +30,21 @@ def evaluate(board):
 
     # 승리 조건 check
     if win_check(board):
-        # print("Game Over")
         return player1_score - player2_score
     # 가로 평가
     line_score(board, True)
-    # print("1", player1_score, player2_score)
+    
     # 세로 평가
     board = list(map(list,zip(*board)))
     line_score(board, True)
-    # print("2", player1_score, player2_score)
+
     # 대각 평가
     line_score(board, False)
     board = [row[::-1] for row in board]
-    # print("3", player1_score, player2_score)
+
     # 대각 대칭 평가
     line_score(board, False)
-    # print("4", player1_score, player2_score)
+
     for _ in range(4):
         edge_score(board)
         board = rotate_90(board)
