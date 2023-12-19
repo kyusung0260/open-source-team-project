@@ -1,9 +1,6 @@
-import sys
-import math
-import copy
-import pygame
-import time
-
+from buffalo_chess_piece import *
+from buffalo_chess_team import *
+from buffalo_chess_display import *
 
 def direction(x):
     if x > 0:
@@ -719,16 +716,6 @@ def hunter_ai():
             pos_to=board_info[2]
     
     game.put(pos_from,pos_to)
-    
-            
-            
-
-        
-        
-        
-
-
-    
 
 def draw_alpha(disp, color, rect):
     rect_shape = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
