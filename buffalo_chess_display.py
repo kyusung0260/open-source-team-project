@@ -1,3 +1,5 @@
+from buffalo_chess_piece import *
+
 class Display:
     def __init__(self):
         self.disp=pygame.display.set_mode((game_board_width,game_board_height),pygame.DOUBLEBUF)
