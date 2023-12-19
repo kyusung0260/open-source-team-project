@@ -1,6 +1,8 @@
 import sys
 import math
+import copy
 import pygame
+import time
 
 BUFFALO='b'
 HUNTER='h'
