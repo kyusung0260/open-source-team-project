@@ -1,10 +1,12 @@
-**1.루빅스 트래블 게임 GUI 구현**
+**1.루빅스 플립 트래블 게임 GUI 구현**
 
-이 게임 파일은 총 3개입니다.
+이 게임 파일은 총 4개입니다.
 
-rubiksFlipTravel.py
-minimax.py
-evaluate.py
+rubiksFlipTravel.py-정동명 제출
+minimax.py-김윤호 제출
+evaluate.py-정동명 제출
+borad_status.py-조우혁 제출
+
 
 
 rubiksFlipTravel.py
