@@ -1,3 +1,5 @@
+from buffalo_chess_piece import *
+
 class Team:
     def __init__(self,TEAM):
         self.team=TEAM
